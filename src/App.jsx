@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { use, useState } from "react";
 
 {/*questi varieranno 
     lo stato è la sitazuone in cui si trova un componente in un determinato instante temporale, situazione che è determinata dalle sue variabili dinamiche*/ }
-const posts=[
+const initialposts=[
 
 
     {
@@ -49,6 +49,21 @@ const posts=[
 function App(){
     {/*variabile che andra modificata con la form */}
     const[newPost, setNewState]=useState("");
+    const[posts, setPosts]=useState(initialposts);
+
+    const onHandleSubmit=(e)=>{
+
+        e.preventDefault(); //obbligatorio!!!
+
+        //creo oggetto nuovo
+        const obj ={
+            id: posts[posts.length-1].id+1,
+            title: newPost
+        }
+
+        setPosts([...posts,obj])
+
+    }
 
     return (
         <div className="container">
@@ -67,7 +82,7 @@ function App(){
                             )
                         })}
                     </ul>
-                    <form action="">
+                    <form onSubmit={onHandleSubmit}>
 
                         <input
 
@@ -79,6 +94,8 @@ function App(){
                
 
                          />
+
+                         {/**quando clicco su inserisci deve aggiungere loggetto nell'elenco */}
                          <button className="btn btn-primary">inserisci</button>
                     </form>
                 </div>
