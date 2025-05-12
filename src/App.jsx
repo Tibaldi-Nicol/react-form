@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import {  useState } from "react";
 
 {/*questi varieranno 
     lo stato è la sitazuone in cui si trova un componente in un determinato instante temporale, situazione che è determinata dalle sue variabili dinamiche*/ }
@@ -62,7 +62,13 @@ function App(){
         }
 
         setPosts([...posts,obj])
+        setNewState("");
 
+    }
+
+    const onHandleDelete=(id)=>{
+        const updateposts=posts.filter((post)=>post.id !=id);
+        setPosts(updateposts);
     }
 
     return (
@@ -84,7 +90,7 @@ function App(){
 
                                         </div>
 
-                                        <div><button className="btn btn-danger"><i className="fas fa-trash"></i></button></div>
+                                        <div><button className="btn btn-danger " onClick={()=>{onHandleDelete(post.id)}}><i className="fas fa-trash"></i></button></div>
 
 
                                     </div>
@@ -117,4 +123,5 @@ function App(){
     
 };
 
-export default App;
+export default App;  
+
