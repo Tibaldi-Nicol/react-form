@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-
+{/*questi varieranno 
+    lo stato è la sitazuone in cui si trova un componente in un determinato instante temporale, situazione che è determinata dalle sue variabili dinamiche*/ }
 const posts=[
 
 
@@ -46,6 +47,9 @@ const posts=[
 ];
 
 function App(){
+    {/*variabile che andra modificata con la form */}
+    const[newPost, setNewState]=useState("");
+
     return (
         <div className="container">
             <div className="row gy-4">
@@ -63,6 +67,20 @@ function App(){
                             )
                         })}
                     </ul>
+                    <form action="">
+
+                        <input
+
+                        /**modificare la variabile newpost */
+                         type="text" placeholder="Nuovo Post" 
+                         className="form-control" 
+                         /**modificare la variabile newpost e - evento devo recuperare il target che sara l'evento input*/
+                         onChange={(e)=> {setNewState(e.target.value)}}
+               
+
+                         />
+                         <button className="btn btn-primary">inserisci</button>
+                    </form>
                 </div>
             </div>
         </div>
