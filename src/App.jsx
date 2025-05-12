@@ -77,7 +77,18 @@ function App(){
                         {posts.map((post)=>{
                             return(
                                 <li className="list-group-item" key={post.id}>
-                                    {post.title}
+                                    <div className="d-flex justify-content-between">
+                                        <div>
+
+                                        {post.title}
+
+                                        </div>
+
+                                        <div><button className="btn btn-danger"><i className="fas fa-trash"></i></button></div>
+
+
+                                    </div>
+                                   
                                 </li>
                             )
                         })}
@@ -89,7 +100,8 @@ function App(){
                         /**modificare la variabile newpost */
                          type="text" placeholder="Nuovo Post" 
                          className="form-control" 
-                         /**modificare la variabile newpost e - evento devo recuperare il target che sara l'evento input*/
+                         value={newPost}
+                         /**modificare la variabile newpost e - evento devo recuperare il target che sara l'evento input on change bidirezionalita nella modifica della variabile e interfaccia*/
                          onChange={(e)=> {setNewState(e.target.value)}}
                
 
